@@ -4,4 +4,12 @@ import './registerServiceWorker'
 import router from './router'
 import store from './store'
 
-createApp(App).use(store).use(router).mount('#app')
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+
+// createApp(App).use(store).use(router).mount('#app')
+const app = createApp(App).use(store)
+app.use(router)
+app.use(VueAxios,axios)
+app.provide('axios', app.config.globalProperties.axios)
+app.mount("#app")
