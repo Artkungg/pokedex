@@ -21,9 +21,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import('../views/pokedex/PokedexView.vue')
   },
   {
-    path: "/pokedex/create",
-    name: "PokedexCreate",
-    component: () => import("../components/pokedex/Form.vue")
+    path: "/pokedex/form",
+    name: "PokedexForm",
+    component: () => import("../components/pokedex/Create.vue")
+  },
+  {
+    path: "/pokedex/edit",
+    name: "PokedexEdit",
+    component: () => import("../components/pokedex/Edit.vue")
   }
 ]
 
