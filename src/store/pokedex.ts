@@ -20,17 +20,18 @@ export default function usePokedex(){
         let res = await axios.get(url + "/api/pokedexs/" + id)
         pokedex.value = res.data.pokedex
     }
-    async function storePokedex(data:Pokedex, image:any){
-        console.log(data)
-        // let formData = new FormData()
-        // formData.append("name_en", data.name_en)
-        // formData.append("name_jp", data.name_jp)
-        // formData.append("type", data.type)
-        // formData.append("img", image)
-        // let res = await axios.post(url + "/api/pokedexs", formData)
-        // if(res.status == 200){
-        //     router.push({name: "PokedexView"})
-        // }
+    async function storePokedex(data:Pokedex, image:Blob | undefined){
+        let formData = new FormData()
+        formData.append("name_en", data.name_en)
+        formData.append("name_jp", data.name_jp)
+        if(image){
+            formData.append("img", image)
+        }        
+        formData.append("type", JSON.stringify(data.type))
+        let res = await axios.post(url + "/api/pokedexs", formData)
+        if(res.status == 200){
+            router.push({name: "PokedexView"})
+        }
     }
     async function editPokedex(data:Pokedex|any, image:Blob){
         let edit_id = router.currentRoute.value.query.edit_id

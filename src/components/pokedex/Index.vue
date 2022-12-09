@@ -24,7 +24,9 @@
                         <td>{{parseInt(index) + 1}}</td>
                         <td>{{poke.name_en}}</td>
                         <td>{{poke.name_jp}}</td>
-                        <td>{{poke.type}}</td>
+                        <td v-for="type in poke.Pokedex_Types" :key="type.id">
+                            {{type.type_name}}
+                        </td>
                         <td v-if="poke.file_path">
                             <img :src="poke.file_path" width="50" height="50"> 
                             <img >

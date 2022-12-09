@@ -17,7 +17,7 @@
                 <button @click="addType">+</button>    
             </label>
             <div v-for="n in num_type" :key="n">
-                <input type="text" v-model="form.type[n-1]">
+                <input type="text" v-model="form.type[n-1].type_name">
             </div>
         </div>
         <button @click="savePokedex">Add Pokemon</button>
@@ -34,7 +34,7 @@ export default defineComponent({
         let form = reactive<Pokedex>({
             name_en: "",
             name_jp: "",
-            type: [],
+            type: [{type_name: ""}],
             file_path: ""
         })
         let image = ref<Blob>()
@@ -47,6 +47,7 @@ export default defineComponent({
         }
 
         const addType = () => {
+            form.type.push({type_name: ""})
             increaseType(1)
         }
 
