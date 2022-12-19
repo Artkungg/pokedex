@@ -62,7 +62,6 @@ export default function usePokedex(){
     }
     function increaseType(num:number){
         num_type.value += num
-        console.log(num_type.value)
     }
     return {
         pokedex, 

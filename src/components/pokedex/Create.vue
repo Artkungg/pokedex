@@ -1,26 +1,29 @@
 <template>
-    <div>
-        <div>
-            <input type="file" @change="onFileChange" name="img">
-        </div>
-        <div>
-            <label for="name_en">Name (EN)</label>
-            <input type="text" v-model="form.name_en">
-        </div>
-        <div>
-            <label for="name_jp">Name (JP)</label>
-            <input type="text" v-model="form.name_jp">
-        </div>
-        <div>
-            <label for="type">
-                Type
-                <button @click="addType">+</button>    
-            </label>
-            <div v-for="n in num_type" :key="n">
-                <input type="text" v-model="form.type[n-1].type_name">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-4 mx-auto">
+                <div class="text-start mb-3">
+                    <label class="form-label">Pokedex Image</label>
+                    <input type="file" class="form-control" @change="onFileChange" name="img">
+                </div>
+                <div class="text-start mb-3">
+                    <label class="form-label">Name (EN)</label>
+                    <input type="text" class="form-control" v-model="form.name_en">
+                </div>
+                <div class="text-start mb-3">
+                    <label class="form-label">Name (JP)</label>
+                    <input type="text" class="form-control" v-model="form.name_jp">
+                </div>
+                <div class="text-start mb-3">
+                    <label class="form-label">Pokedex Type</label>
+                    <div class="mt-1" v-for="n in num_type" :key="n">
+                        <input type="text" class="form-control col-lg-5" v-model="form.type[n-1].type_name">
+                        <button class="btn btn-outline-info mt-2" v-if="n == num_type" @click="addType">+</button>
+                    </div>
+                </div>
+                <button class="text-center btn btn-outline-success" @click="savePokedex">Add Pokemon</button>
             </div>
         </div>
-        <button @click="savePokedex">Add Pokemon</button>
     </div>
 </template>
 
